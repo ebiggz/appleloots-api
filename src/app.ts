@@ -1,4 +1,5 @@
 import * as bodyParser from "body-parser";
+import cors from "cors";
 import express from "express";
 import RateLimit from "express-rate-limit";
 import { apiRouter } from "./api-router";
@@ -22,6 +23,8 @@ const rateLimiter = new RateLimit({
   });
 
 app.use(rateLimiter);
+
+app.use(cors());
 
 app.use("/v1", apiRouter);
 
